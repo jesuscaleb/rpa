@@ -8702,7 +8702,7 @@ body {
 
 .gray-text {
   font-family: Gothan Book;
-  color: #666666; }
+  color: #858585; }
 
 /* Header */
 .itsystems-header {
@@ -8753,26 +8753,26 @@ body {
   background-color: #262672;
   border-color: #262672;
   font-family: Gothan Book;
-  color: #666666; }
+  color: #858585; }
 .itsystems-form select {
   font-size: 14.3px; }
 .itsystems-form .chkAuto {
-  color: #666666;
+  color: #858585;
   font-family: Gothan Book; }
 .itsystems-form .chkAuto:before {
   border-radius: 0px;
-  background-color: #666666;
-  border-color: #666666; }
+  background-color: #858585;
+  border-color: #858585; }
 .itsystems-form ::placeholder {
-  color: #666666;
+  color: #858585;
   opacity: 1;
   /* Firefox */ }
 .itsystems-form :-ms-input-placeholder, .itsystems-form :-ms-select-placeholder {
   /* Internet Explorer 10-11 */
-  color: #666666; }
+  color: #858585; }
 .itsystems-form ::-ms-input-placeholder, .itsystems-form ::-ms-select-placeholder {
   /* Microsoft Edge */
-  color: #666666; }
+  color: #858585; }
 
 .button-head {
   margin-top: 25px; }
@@ -8795,7 +8795,7 @@ body {
   margin-bottom: 30px; }
 .itsystems-main-right p {
   font-family: Gothan Book;
-  color: #666666; }
+  color: #858585; }
 .itsystems-main-right p:last-child {
   margin-bottom: 0px; }
 
@@ -8876,7 +8876,7 @@ body {
   .itsystems-info .itsystems-info-item p {
     padding-top: 10px;
     font-family: Gothan Book;
-    color: #666666;
+    color: #858585;
     font-size: 16.5px; }
   .itsystems-info .itsystems-info-icon img {
     max-width: 80px;
@@ -8893,7 +8893,7 @@ body {
 .itsystems-temario .itsystems-temario-content {
   margin-bottom: 40px; }
   .itsystems-temario .itsystems-temario-content .itsystems-temario-column p {
-    color: #666666;
+    color: #858585;
     font-family: Gothan Book; }
 .itsystems-temario .itsystems-temario-tema {
   width: 65%;
@@ -8939,7 +8939,7 @@ body {
       margin-left: auto; }
   .itsystems-footer .itsystems-footer-post {
     background-color: #01012b;
-    color: #666666;
+    color: #858585;
     font-family: Gothan Book; }
 
 /*# sourceMappingURL=index.css.map */
