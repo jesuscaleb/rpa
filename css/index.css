@@ -8675,6 +8675,11 @@ body {
   width: 50% !important; }
 
 /* Main classes */
+.error {
+  color: #c40014;
+  font-family: Gothan Book;
+  font-size: 13px; }
+
 .white-title {
   font-family: Gothan Medium;
   color: white; }
@@ -8790,9 +8795,17 @@ body {
 .itsystems-main-left img {
   margin-left: 23%;
   margin-right: 23%; }
+  @media screen and (max-width: 370px) {
+    .itsystems-main-left img {
+      margin-left: 0%;
+      margin-right: 0%;
+      width: 100%; } }
 
 .itsystems-main-right h3 {
   margin-bottom: 30px; }
+  @media screen and (max-width: 370px) {
+    .itsystems-main-right h3 {
+      font-size: 18px; } }
 .itsystems-main-right p {
   font-family: Gothan Book;
   color: #858585; }
@@ -8840,9 +8853,9 @@ body {
   margin-top: 30px;
   padding: 30px; }
   .itsystems-obj-bottom .obj-bot-item {
-    margin-right: 10%;
-    padding-left: 40px;
-    padding-top: 12px; }
+    margin-right: 7%;
+    padding-top: 12px;
+    padding-left: 0px; }
     .itsystems-obj-bottom .obj-bot-item p {
       margin-bottom: 0px; }
     .itsystems-obj-bottom .obj-bot-item p:first-child {
@@ -8856,7 +8869,8 @@ body {
   .itsystems-obj-bottom .vertical-line {
     height: 100px;
     background-color: #3cdfff;
-    width: 1px; }
+    width: 1px;
+    margin-right: 40px; }
 
 .bg-obj-bottom {
   background-color: #01013f; }
@@ -8907,6 +8921,9 @@ body {
   .itsystems-temario .itsystems-temario-tag span {
     font-family: Gothan Bold;
     color: #3cdfff; }
+  @media screen and (max-width: 370px) {
+    .itsystems-temario .itsystems-temario-tag {
+      width: 170px; } }
 
 /*Form 2*/
 .form2 {

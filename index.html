@@ -4,10 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- OG: Social Media Thumbnail -->
+    <meta property="og:image" content="img/bgrpa.png" /> 
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://rpa.itsystems.pe/" />
+    <meta property="og:title" content="Automatización de Robótica de Procesos (RPA)" />
+    <meta property="og:description" content="Conoce los diversos itinerarios de robótica de procesos en el mundo empresarial."/>
+
     <link rel="stylesheet" href="css/index.css">
     <link rel="shortcut icon" href="img/rpa.ico" type="image/x-icon">
     <link rel="icon" href="img/rpa.ico" type="image/x-icon">
-    <title>RPA | ITSYSTEMS</title>
+    <title>RPA / ITSYSTEMS</title>
 </head>
 <body class="d-flex flex-column">
     <div id="itsystems-content">
@@ -25,7 +32,7 @@
                       </div>
                       <div class="itsystems-head-sub">
                           <ul class="white-li">
-                              <li> Conocer los diversos itinerarios de robótica de procesos
+                              <li> Conoce los diversos itinerarios de robótica de procesos
                                 que permiten la automatización de diversas tareas en el
                                 mundo empresarial.</li>
                           </ul>
@@ -35,12 +42,14 @@
                       <div class="col-md-5 offset-md-1 mt-md-4 ">
                         <div class="itsystems-div-form">
                           <div class="container">
+                            <div class="response text-center"></div>
+                            <div class="after-post">
                             <div class="itsystems-form-top form-top1 text-center">
                               <h4 class="white-bold-title">¿Necesitas más información?</h4>
                               <p class="lgtblue-sub">Déjanos tus datos y resolveremos tus dudas</p>
                             </div>
                             <div class="itsystems-form form1">
-                              <form class="form" action="#" method="" autocomplete="off">
+                              <form class="form" id="itsystems-form1" autocomplete="off">
                                 <div class="row">
                                   <div class="col-md-6">
                                     <div class="form-group">
@@ -67,7 +76,8 @@
                                       <select class="form-control" name="selTipoDoc" id="selTipoDoc">
                                         <option value="default">Seleccione tipo de documento</option>
                                         <option value="DNI">DNI</option>
-                                        <option value="Pasaporte">Pasaporte</option>
+                                        <option value="PASAPORTE">Pasaporte</option>
+                                        <option value="RUC">RUC</option>
                                       </select>
                                     </div>
                                   </div>
@@ -76,16 +86,17 @@
                                   <div class="row">
                                     <div class="col-md-12">
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="chkAuto">
+                                        <input type="checkbox" name="chkAuto" class="custom-control-input" id="chkAuto">
                                         <label class="custom-control-label chkAuto" for="chkAuto">Autorizo el registro de mis datos para información de los cursos.</label>
                                       </div>
                                     </div>
                                   </div>
                                   <div class="button-head">
-                                    <button type="submit" class="btn btn-primary btn-lg btn-block">ENVIAR</button>
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block btn-enviar">ENVIAR</button>
                                   </div>
                                 </div>
                               </form>
+                            </div>
                             </div>
                           </div>
                         </div>
@@ -165,17 +176,17 @@
                     <p>Inicio</p>
                     <p>11 de Enero del 2020</p>
                   </div>
-                  <div class="vertical-line"></div>
+                  <div class="d-none vertical-line"></div>
                   <div class="col-md-2  obj-bot-item">
                     <p>Horario</p>
                     <p>8:30 am a 1:00 pm</p>
                   </div>
-                  <div class="vertical-line"></div>
+                  <div class="d-none vertical-line"></div>
                   <div class="col-md-2  obj-bot-item">
                     <p>Duración</p>
                     <p>24 horas académicas</p>
                   </div>
-                  <div class="vertical-line"></div>
+                  <div class="d-none  vertical-line"></div>
                   <div class="col-md-2 pr-0 obj-bot-item">
                     <p>Sede</p>
                     <p>Cercado de Lima</p>
@@ -188,10 +199,12 @@
     <section id="ITSYSTEMS-INFO">
         <div class="container">
           <div class="itsystems-info">
-            <div class="itsystems-info-title mx-auto text-center">
+            <div class="row">
+              <div class="itsystems-info-title mx-auto text-center">
                 <h3 class="darkblue-title" >¿Por qué estudiar nuestro curso de Automatización de Procesos ( RPA )?</h3>
+              </div>
+              <div class="mx-auto horizontal-line"></div>
             </div>
-            <div class="mx-auto horizontal-line"></div>
             <div class="row itsystems-info-row">
                 <div class="col-md-4">
                     <div class="itsystems-info-item">
@@ -287,15 +300,17 @@
         </div>
     </section>
     <section id="ITSYSTEMS-FORM2">
-        <div class="container itsystems-div-form form2">                
+        <div class="container itsystems-div-form form2">      
+          <div class="response text-center"></div>
+          <div class="after-post">
           <div class="row">
               <div class="col-12 col-md-12 text-center itsystems-form-top form-top2">
                   <h4 class="white-bold-title mb-0">Solicitar más información</h4>
                   <p class="lgtblue-sub">Déjanos tus datos y resolveremos tus dudas</p>
               </div>
           </div>
-          <div class="itsystems-form ">
-              <form class="form" action="#" method="" autocomplete="off">
+          <div class="itsystems-form">
+              <form class="form" id="itsystems-form2" autocomplete="off">
                 <div class="row itsystems-footer-form-top">
                   <div class="col-md-6">
                     <div class="form-group">
@@ -322,21 +337,23 @@
                         <select class="form-control" name="selTipoDoc2" id="selTipoDoc2">
                           <option value="default">Seleccione tipo de documento</option>
                           <option value="DNI">DNI</option>
-                          <option value="Pasaporte">Pasaporte</option>
+                          <option value="PASAPORTE">Pasaporte</option>
+                          <option value="RUC">RUC</option>
                         </select>
                     </div>
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="chkAuto2">
+                        <input type="checkbox" name="chkAuto2" class="custom-control-input" id="chkAuto2">
                         <label class="custom-control-label chkAuto" for="chkAuto2">Autorizo el registro de mis datos para información de los cursos.</label>
                     </div>
                   </div>
                 </div>
                 <div class="itsystems-form-bottom">
                   <div class="button-row">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block m-auto">ENVIAR</button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block m-auto btn-enviar">ENVIAR</button>
                   </div>
                 </div>
               </form>
+          </div>
           </div>
       </div>
     </section>
@@ -369,5 +386,13 @@
         </footer>
     </section>
     </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/jquery-validate.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
   </body>
 </html>
