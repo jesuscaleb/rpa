@@ -1,25 +1,28 @@
-// Responsive vertical-line class 
-
 $(document).ready(function () {
     $('.vertical-line').removeClass('d-none');
 });
 
+
 $(window).resize(function(){     
-
     if ($(window).width() < 768 ){
-
         $('.vertical-line').addClass('d-none');
-
     }else{
         $('.vertical-line').removeClass('d-none');
     }
-
 });
 
 // Select Element Rule Function
 $.validator.addMethod("valueNotEquals", function(value, element, arg){
     return arg != value;
 }, "Value must not equal arg.");
+
+$.validator.addMethod("alphanumeric", function(value, element) {
+    return this.optional(element) || /^\w+$/i.test(value);
+}, "Letters, numbers, and underscores only please but not whitespaces and arrobas");
+
+$.validator.addMethod("nameRegex", function(value, element) {
+    return this.optional(element) || /^[a-z0-9\ \s]+$/i.test(value);
+}, "Name must contain only letters, number &  space");
 
 // Forzar descarga de un archivo
 function SaveToDisk(fileURL, fileName) {
@@ -51,30 +54,45 @@ function SaveToDisk(fileURL, fileName) {
 
 // Registration Form Validation
 $(document).ready(function(){
+    // Intl-Telf-Input
+    var input1 = document.querySelector("#txtTelf");
+    var iti1 = window.intlTelInput(input1, {
+        onlyCountries: ["ca", "cl", "co", "cr", "cu", "dm", "ec", "sv", "us", "gf",
+        "ht", "gt", "hn", "jm", "mx", "ni", "pa", "py", "pe", "do", "lc", "sr", "tt",
+        "uy", "ve"],
+        separateDialCode: true,
+        initialCountry: "pe"
+    }
+    );
 
     var validator = $('#itsystems-form1').validate({
             rules:{
             txtNom:{
-                required:true
+                required:true,
+                nameRegex:true
             },
             txtTelf:{
                 required:true,
                 digits:true,
-                minlength: 7
+                minlength: 7,
+                alphanumeric:true
             },
             txtNroDoc:{
                 required:true,
+                alphanumeric:true,
                 digits:true
             },
             txtEmpresa:{
-                required: true
+                required: true,
+                nameRegex:true
             },
             txtEmail:{
                 required:true,
                 email: true
             },
             txtCargo:{
-                required:true
+                required:true,
+                nameRegex:true
             },
             selTipoDoc:{
                 valueNotEquals: "default"
@@ -85,26 +103,31 @@ $(document).ready(function(){
         },
         messages:{
             txtNom:{
-                required:"Ingrese sus nombres completos"
+                required:"Ingrese sus nombres completos",
+                nameRegex:"Ingrese numeros o letras"
             },
             txtTelf:{
                 required: "Ingrese su numero telefonico",
                 digits: "Ingrese solo numeros",
-                minlength: "Minimo 7 caracteres"
+                minlength: "Minimo 7 caracteres",
+                alphanumeric:"Ingrese solo numeros"
             },
             txtNroDoc:{
                 required: "Ingrese numero de su documento de identidad",
-                digits: "Ingrese solo numeros"
+                digits: "Ingrese solo numeros",
+                alphanumeric:"Ingrese numeros"
             },
             txtEmpresa:{
-                required: "Ingrese el nombre de la empresa en la que pertenece"
+                required: "Ingrese el nombre de la empresa en la que pertenece",
+                nameRegex:"Ingrese numeros o letras"
             },
             txtEmail:{
                 required:"Ingrese su Correo electrónico",
                 email:"Correo invalido"
             },
             txtCargo:{
-                required:"Ingrese su cargo"
+                required:"Ingrese su cargo",
+                nameRegex:"Ingrese numeros o letras"
             },
             selTipoDoc:{
                 valueNotEquals: "Selecciona un tipo de documento"
@@ -116,6 +139,8 @@ $(document).ready(function(){
         errorPlacement: function( label, element ) {
             if( element.attr( "name" ) === "audience[]" || element.attr( "name" ) === "event_services[]" ) {
                 element.parent().append( label ); // this would append the label after all your checkboxes/labels (so the error-label will be the last element in <div class="controls"> )
+            } else if (element.attr("name") == "txtTelf"){
+                label.insertBefore(".telf-error");
             } else {
                 label.insertBefore( element ); // standard behaviour
             }
@@ -129,13 +154,15 @@ $(document).ready(function(){
 
             // Variables para el envio
             var nombre = $('#itsystems-form1').find('input[name="txtNom"]').val();
-            var telf = $('#itsystems-form1').find('input[name="txtTelf"]').val();
+            var digit1 = iti1.getSelectedCountryData().dialCode;
+            var digit2 = $('#itsystems-form1').find('input[name="txtTelf"]').val();
+            var telf = digit1 + digit2;
             var nroDoc = $('#itsystems-form1').find('input[name="txtNroDoc"]').val();
             var empresa = $('#itsystems-form1').find('input[name="txtEmpresa"]').val();
             var email = $('#itsystems-form1').find('input[name="txtEmail"]').val();
             var cargo = $('#itsystems-form1').find('input[name="txtCargo"]').val();
             var tipoDoc = $('#itsystems-form1').find('select[name="selTipoDoc"]').val();
-
+            var pais = iti1.getSelectedCountryData().name;
             // Nombre del temario
             var temario = "Temario RPA - ROBOTIZACION PROCESOS";
 
@@ -144,6 +171,7 @@ $(document).ready(function(){
                 type: 'POST',
                 // TODO: Cambiar los valores por el formulario actual 
                 data: {
+                    "entry.1608581245": pais,
                     "entry.20737030": nombre,
                     "entry.1412086532": email,
                     "entry.1444273475": telf,
@@ -181,29 +209,46 @@ $(document).ready(function(){
         }
     });
 
+        
+
+    var input2 = document.querySelector("#txtTelf2");
+    var iti2 = window.intlTelInput(input2, {
+        onlyCountries: ["ca", "cl", "co", "cr", "cu", "dm", "ec", "sv", "us", "gf",
+        "ht", "gt", "hn", "jm", "mx", "ni", "pa", "py", "pe", "do", "lc", "sr", "tt",
+        "uy", "ve"],
+        separateDialCode: true,
+        initialCountry: "pe"
+    }
+    );
+
     var validator2 = $('#itsystems-form2').validate({
-            rules:{
+        rules:{
             txtNom2:{
-                required:true
+                required:true,
+                nameRegex:true
             },
             txtTelf2:{
                 required:true,
                 digits:true,
-                minlength: 7
+                minlength: 7,
+                alphanumeric:true
             },
             txtNroDoc2:{
                 required:true,
+                alphanumeric:true,
                 digits:true
             },
             txtEmpresa2:{
-                required: true
+                required: true,
+                nameRegex:true
             },
             txtEmail2:{
                 required:true,
                 email: true
             },
             txtCargo2:{
-                required:true
+                required:true,
+                nameRegex:true
             },
             selTipoDoc2:{
                 valueNotEquals: "default"
@@ -214,26 +259,31 @@ $(document).ready(function(){
         },
         messages:{
             txtNom2:{
-                required:"Ingrese sus nombres completos"
+                required:"Ingrese sus nombres completos",
+                nameRegex:"Ingrese numeros o letras"
             },
             txtTelf2:{
                 required: "Ingrese su numero telefonico",
                 digits: "Ingrese solo numeros",
-                minlength: "Minimo 7 caracteres"
+                minlength: "Minimo 7 caracteres",
+                alphanumeric:"Ingrese solo numeros"
             },
             txtNroDoc2:{
                 required: "Ingrese numero de su documento de identidad",
-                digits: "Ingrese solo numeros"
+                digits: "Ingrese solo numeros",
+                alphanumeric:"Ingrese numeros"
             },
             txtEmpresa2:{
-                required: "Ingrese el nombre de la empresa en la que pertenece"
+                required: "Ingrese el nombre de la empresa en la que pertenece",
+                nameRegex:"Ingrese numeros o letras"
             },
             txtEmail2:{
                 required:"Ingrese su Correo electrónico",
                 email:"Correo invalido"
             },
             txtCargo2:{
-                required:"Ingrese su cargo"
+                required:"Ingrese su cargo",
+                nameRegex:"Ingrese numeros o letras"
             },
             selTipoDoc2:{
                 valueNotEquals: "Selecciona un tipo de documento"
@@ -245,6 +295,8 @@ $(document).ready(function(){
         errorPlacement: function( label, element ) {
             if( element.attr( "name" ) === "audience[]" || element.attr( "name" ) === "event_services[]" ) {
                 element.parent().append( label ); // this would append the label after all your checkboxes/labels (so the error-label will be the last element in <div class="controls"> )
+            } else if (element.attr("name") == "txtTelf2"){
+                label.insertBefore(".telf-error2");
             } else {
                 label.insertBefore( element ); // standard behaviour
             }
@@ -258,13 +310,15 @@ $(document).ready(function(){
 
             // Variables para el envio
             var nombre = $('#itsystems-form2').find('input[name="txtNom2"]').val();
-            var telf = $('#itsystems-form2').find('input[name="txtTelf2"]').val();
+            var digit1 = iti2.getSelectedCountryData().dialCode;
+            var digit2 = $('#itsystems-form2').find('input[name="txtTelf2"]').val();
+            var telf = digit1 + digit2;
             var nroDoc = $('#itsystems-form2').find('input[name="txtNroDoc2"]').val();
             var empresa = $('#itsystems-form2').find('input[name="txtEmpresa2"]').val();
             var email = $('#itsystems-form2').find('input[name="txtEmail2"]').val();
             var cargo = $('#itsystems-form2').find('input[name="txtCargo2"]').val();
             var tipoDoc = $('#itsystems-form2').find('select[name="selTipoDoc2"]').val();
-
+            var pais = iti2.getSelectedCountryData().name;
             // Nombre del temario
             var temario = "Temario RPA - ROBOTIZACION PROCESOS";
 
@@ -273,6 +327,7 @@ $(document).ready(function(){
                 type: 'POST',
                 // TODO: Cambiar los valores por el formulario actual 
                 data: {
+                    "entry.1608581245": pais,
                     "entry.20737030": nombre,
                     "entry.1412086532": email,
                     "entry.1444273475": telf,
