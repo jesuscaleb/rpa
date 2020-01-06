@@ -202,18 +202,8 @@ body {
 }
 
 .itsystems-main-left{
-  img{
-    margin-left: 23%;
-    margin-right: 23%;
-
-    @media screen and (max-width: $break-small) {
-      margin-left: 0%;
-      margin-right: 0%;
-      width: 100%;
-    }
-  }
-
-  
+  width: 200px;
+  height: auto;
 }
 
 .itsystems-main-right{
@@ -350,11 +340,12 @@ body {
   }
 
   .itsystems-info-icon{
+    width: 80px;
+    margin-left: auto;
+    margin-right: auto;
     img{
       max-width: 80px;
       height: auto;
-      margin-left: 37%;
-      margin-right: 37%;
     }
   }
 }

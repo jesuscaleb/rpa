@@ -8791,14 +8791,9 @@ body {
 .itsystems-main {
   margin: 50px; }
 
-.itsystems-main-left img {
-  margin-left: 23%;
-  margin-right: 23%; }
-  @media screen and (max-width: 370px) {
-    .itsystems-main-left img {
-      margin-left: 0%;
-      margin-right: 0%;
-      width: 100%; } }
+.itsystems-main-left {
+  width: 200px;
+  height: auto; }
 
 .itsystems-main-right h3 {
   margin-bottom: 30px; }
@@ -8889,11 +8884,13 @@ body {
     font-family: Gothan Book;
     color: #858585;
     font-size: 16.5px; }
-  .itsystems-info .itsystems-info-icon img {
-    max-width: 80px;
-    height: auto;
-    margin-left: 37%;
-    margin-right: 37%; }
+  .itsystems-info .itsystems-info-icon {
+    width: 80px;
+    margin-left: auto;
+    margin-right: auto; }
+    .itsystems-info .itsystems-info-icon img {
+      max-width: 80px;
+      height: auto; }
 
 /* Temario */
 .itsystems-temario .border-temario {
