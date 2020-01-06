@@ -51,20 +51,33 @@ function SaveToDisk(fileURL, fileName) {
         _window.close();
     }
 }
-
+// Public variable 
+var countryCity;
 // Registration Form Validation
 $(document).ready(function(){
     // Intl-Telf-Input
+    
     var input1 = document.querySelector("#txtTelf");
-    var iti1 = window.intlTelInput(input1, {
-        onlyCountries: ["ca", "cl", "co", "cr", "cu", "dm", "ec", "sv", "us", "gf",
-        "ht", "gt", "hn", "jm", "mx", "ni", "pa", "py", "pe", "do", "lc", "sr", "tt",
-        "uy", "ve"],
+   
+    var iti1 = window.intlTelInput(input1, {        
+        onlyCountries: [ "cl", "co", "cr", "cu",  "ec", "sv",
+         "gt", "hn", "mx", "ni", "pa", "py", "pe", "do", "uy", "ve", "bo"],
+        localizedCountries : {
+            "do": "Republica Dominicana", "pe": "Peru",
+            "mx": "Mexico", "pa": "Panama"
+        },
         separateDialCode: true,
-        initialCountry: "pe"
+        initialCountry: "auto",
+        geoIpLookup: function(callback) {
+            $.getJSON('https://freegeoip.app/json/', function() {}, "jsonp").always(function(resp) {
+              var countryCode = resp.country_code;
+              countryCity = resp.city;
+              callback(countryCode);              
+            });
+        },
+        utilsScript: "/js/utils.js" // just for formatting/placeholders etc
     }
     );
-
     var validator = $('#itsystems-form1').validate({
             rules:{
             txtNom:{
@@ -163,6 +176,7 @@ $(document).ready(function(){
             var cargo = $('#itsystems-form1').find('input[name="txtCargo"]').val();
             var tipoDoc = $('#itsystems-form1').find('select[name="selTipoDoc"]').val();
             var pais = iti1.getSelectedCountryData().name;
+            var ciudad = countryCity;
             // Nombre del temario
             var temario = "Temario RPA - ROBOTIZACION PROCESOS";
 
@@ -172,6 +186,7 @@ $(document).ready(function(){
                 // TODO: Cambiar los valores por el formulario actual 
                 data: {
                     "entry.1608581245": pais,
+                    "entry.1016680850":ciudad,
                     "entry.20737030": nombre,
                     "entry.1412086532": email,
                     "entry.1444273475": telf,
@@ -209,15 +224,24 @@ $(document).ready(function(){
         }
     });
 
-        
-
     var input2 = document.querySelector("#txtTelf2");
     var iti2 = window.intlTelInput(input2, {
-        onlyCountries: ["ca", "cl", "co", "cr", "cu", "dm", "ec", "sv", "us", "gf",
-        "ht", "gt", "hn", "jm", "mx", "ni", "pa", "py", "pe", "do", "lc", "sr", "tt",
-        "uy", "ve"],
+        onlyCountries: [ "cl", "co", "cr", "cu",  "ec", "sv",
+         "gt", "hn", "mx", "ni", "pa", "py", "pe", "do", "uy", "ve", "bo"],
+        localizedCountries : {
+            "do": "Republica Dominicana", "pe": "Peru",
+            "mx": "Mexico", "pa": "Panama"
+        },
         separateDialCode: true,
-        initialCountry: "pe"
+        initialCountry: "auto",
+        geoIpLookup: function(callback) {
+            $.getJSON('https://freegeoip.app/json/', function() {}, "jsonp").always(function(resp) {
+              var countryCode = resp.country_code;
+              countryCity = resp.city;
+              callback(countryCode);
+            });
+          },
+        utilsScript: "/js/utils.js" // just for formatting/placeholders etc
     }
     );
 
@@ -319,6 +343,7 @@ $(document).ready(function(){
             var cargo = $('#itsystems-form2').find('input[name="txtCargo2"]').val();
             var tipoDoc = $('#itsystems-form2').find('select[name="selTipoDoc2"]').val();
             var pais = iti2.getSelectedCountryData().name;
+            var ciudad = countryCity;
             // Nombre del temario
             var temario = "Temario RPA - ROBOTIZACION PROCESOS";
 
@@ -328,6 +353,7 @@ $(document).ready(function(){
                 // TODO: Cambiar los valores por el formulario actual 
                 data: {
                     "entry.1608581245": pais,
+                    "entry.1016680850":ciudad,
                     "entry.20737030": nombre,
                     "entry.1412086532": email,
                     "entry.1444273475": telf,

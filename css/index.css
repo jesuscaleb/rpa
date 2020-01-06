@@ -8711,8 +8711,7 @@ body {
 
 /* Header */
 .itsystems-header {
-  padding-bottom: 2.4em;
-  padding-top: 2.5em; }
+  padding-bottom: 2.4em; }
 
 .bg-header {
   background-image: url("/img/bgrpaw.png");
@@ -8879,8 +8878,6 @@ body {
 .itsystems-info {
   margin-top: 40px;
   margin-bottom: 60px; }
-  .itsystems-info .itsystems-info-row {
-    margin-top: 50px; }
   .itsystems-info .itsystems-info-title {
     width: 540px; }
   .itsystems-info .horizontal-line {
@@ -10176,6 +10173,9 @@ body {
     background-image: url(img/icons/flags@2x.png); } }
 .iti__flag.iti__np {
   background-color: transparent; }
+
+.iti__flag {
+  background-image: url("/img/icons/flags.png"); }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .iti__flag {
