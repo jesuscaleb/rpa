@@ -52,7 +52,7 @@ function SaveToDisk(fileURL, fileName) {
     }
 }
 // Public variable 
-var countryCity;
+var countryCity; var countryName;
 // Registration Form Validation
 $(document).ready(function(){
     // Intl-Telf-Input
@@ -72,6 +72,7 @@ $(document).ready(function(){
             $.getJSON('https://freegeoip.app/json/', function() {}, "jsonp").always(function(resp) {
               var countryCode = resp.country_code;
               countryCity = resp.city;
+              countryName = resp.country_name;
               callback(countryCode);              
             });
         },
@@ -175,8 +176,9 @@ $(document).ready(function(){
             var email = $('#itsystems-form1').find('input[name="txtEmail"]').val();
             var cargo = $('#itsystems-form1').find('input[name="txtCargo"]').val();
             var tipoDoc = $('#itsystems-form1').find('select[name="selTipoDoc"]').val();
-            var pais = iti1.getSelectedCountryData().name;
+            var paisSel = iti1.getSelectedCountryData().name;
             var ciudad = countryCity;
+            var paisR = countryName;
             // Nombre del temario
             var temario = "Temario RPA - ROBOTIZACION PROCESOS";
 
@@ -185,7 +187,8 @@ $(document).ready(function(){
                 type: 'POST',
                 // TODO: Cambiar los valores por el formulario actual 
                 data: {
-                    "entry.1608581245": pais,
+                    "entry.1608581245": paisSel,
+                    "entry.1666539079": paisR,
                     "entry.1016680850":ciudad,
                     "entry.20737030": nombre,
                     "entry.1412086532": email,
@@ -342,7 +345,8 @@ $(document).ready(function(){
             var email = $('#itsystems-form2').find('input[name="txtEmail2"]').val();
             var cargo = $('#itsystems-form2').find('input[name="txtCargo2"]').val();
             var tipoDoc = $('#itsystems-form2').find('select[name="selTipoDoc2"]').val();
-            var pais = iti2.getSelectedCountryData().name;
+            var paisSel = iti2.getSelectedCountryData().name;
+            var paisR = countryName;
             var ciudad = countryCity;
             // Nombre del temario
             var temario = "Temario RPA - ROBOTIZACION PROCESOS";
@@ -352,7 +356,8 @@ $(document).ready(function(){
                 type: 'POST',
                 // TODO: Cambiar los valores por el formulario actual 
                 data: {
-                    "entry.1608581245": pais,
+                    "entry.1608581245": paisSel,
+                    "entry.1666539079": paisR,
                     "entry.1016680850":ciudad,
                     "entry.20737030": nombre,
                     "entry.1412086532": email,
